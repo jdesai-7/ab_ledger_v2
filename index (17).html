@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB LedgerWorks — Your Extended Global Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --navy:         #1B2C5E;
+    --navy-deep:    #111E42;
+    --navy-mid:     #213570;
+    --navy-light:   #2B4494;
+    --gold:         #C9A84C;
+    --gold-light:   #DFC070;
+    --gold-dark:    #A8882E;
+    --gold-glow:    rgba(201,168,76,0.11);
+    --silver:       #8C9BB5;
+    --white:        #FFFFFF;
+    --off-white:    #F8F9FC;
+    --grey-50:      #F4F6FA;
+    --grey-100:     #EDF0F7;
+    --grey-200:     #D8DDEC;
+    --grey-300:     #B8C2D8;
+    --grey-400:     #8C9BB5;
+    --grey-600:     #4A5578;
+    --grey-800:     #2A3355;
+    --font-display: 'Poppins', system-ui, sans-serif;
+    --font-body:    'Manrope', system-ui, sans-serif;
+    --shadow-sm:    0 1px 4px rgba(27,44,94,0.07);
+    --shadow-md:    0 4px 20px rgba(27,44,94,0.12);
+    --shadow-lg:    0 16px 52px rgba(27,44,94,0.18);
+    --shadow-gold:  0 8px 32px rgba(201,168,76,0.30);
+    --radius:       14px;
+    --radius-lg:    22px;
+    --radius-xl:    32px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    color: var(--navy);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── UTILITY ─── */
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 36px; }
+  .section { padding: 108px 0; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--gold-dark); margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 32px; height: 2px; flex-shrink: 0;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    color: var(--navy); line-height: 1.14; margin-bottom: 20px;
+    font-weight: 700; letter-spacing: -0.025em;
+  }
+  .section-subtitle {
+    font-size: 1.12rem; color: var(--grey-600); line-height: 1.85; max-width: 60ch;
+  }
+
+  /* ─── BUTTONS ─── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 30px; border-radius: 9px; font-family: var(--font-body);
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    text-decoration: none; border: none; line-height: 1;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 60%, var(--gold-light) 100%);
+    color: var(--navy-deep); box-shadow: 0 4px 18px rgba(201,168,76,0.36);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+  .btn-outline {
+    background: transparent; color: var(--navy); border: 1.5px solid var(--grey-200);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-dark); background: var(--gold-glow); }
+  .btn-outline-white {
+    background: transparent; color: rgba(255,255,255,0.82);
+    border: 1.5px solid rgba(255,255,255,0.20);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .btn-outline-white:hover { border-color: rgba(255,255,255,0.6); color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .btn-navy {
+    background: var(--navy); color: var(--white);
+    box-shadow: 0 4px 18px rgba(27,44,94,0.30);
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-navy:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(27,44,94,0.38); }
+
+  /* ─── SCROLL PROGRESS ─── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--navy-deep), var(--navy-light), #5B8FD4);
+    z-index: 200; width: 0%; transition: width 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════
+     NAVBAR
+  ═══════════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 28px 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(27,44,94,0.08);
+    border-bottom: 1px solid var(--grey-100);
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+  }
+  nav.scrolled {
+    padding: 12px 0;
+    box-shadow: 0 4px 28px rgba(27,44,94,0.10);
+    border-bottom-color: var(--grey-200);
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0; order: 1; }
+  .nav-logo-img { height: 48px; width: auto; object-fit: contain; }
+
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; flex: 1; justify-content: center; order: 2; }
+  .nav-item { position: relative; }
+  .nav-item > a {
+    display: flex; align-items: center; gap: 5px; color: var(--grey-600);
+    text-decoration: none; font-size: 0.92rem; font-weight: 600;
+    transition: color 0.2s; position: relative;
+  }
+  .nav-item > a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1.5px; background: var(--navy);
+    transform: scaleX(0); transition: transform 0.25s ease;
+  }
+  .nav-item > a:hover { color: var(--navy); }
+  .nav-item > a:hover::after { transform: scaleX(1); }
+
+  .dropdown-toggle { padding-right: 14px; }
+  .dropdown-toggle::before {
+    content: ''; position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%); width: 0; height: 0;
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-top: 5px solid var(--grey-400);
+    transition: transform 0.3s, border-top-color 0.2s; pointer-events: none;
+  }
+  .nav-item:hover > a.dropdown-toggle::before { transform: translateY(-50%) rotate(180deg); border-top-color: var(--navy); }
+  .nav-item > a.dropdown-toggle::after { display: none; }
+
+  .dropdown-menu {
+    position: absolute; top: 100%; left: -16px; min-width: 290px;
+    background: var(--white); border: 1px solid var(--grey-100); border-radius: 16px;
+    box-shadow: 0 16px 44px rgba(27,44,94,0.14);
+    margin-top: 10px; opacity: 0; visibility: hidden;
+    transform: translateY(-6px); transition: all 0.25s ease;
+    padding: 8px 0; z-index: 101;
+  }
+  .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown-menu a {
+    display: block; padding: 11px 20px; color: var(--grey-600);
+    text-decoration: none; font-size: 0.86rem; font-weight: 500;
+    transition: all 0.2s; border-left: 2px solid transparent;
+  }
+  .dropdown-menu a:hover { background: var(--grey-50); color: var(--navy); border-left-color: var(--navy); padding-left: 24px; }
+  .dropdown-menu .dropdown-title {
+    padding: 12px 20px 8px; color: var(--navy); font-weight: 700;
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.11em;
+    border-bottom: 1px solid var(--grey-100);
+  }
+
+  .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; order: 3; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 4px; background: none; border: none; order: 3; margin-left: auto;
+  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 62px; left: 0; right: 0;
+    background: var(--navy-deep); flex-direction: column;
+    z-index: 99; max-height: calc(100vh - 62px); overflow-y: auto; padding: 20px 0;
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu > a, .mobile-menu .mobile-dropdown-toggle {
+    padding: 14px 24px; color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    border-bottom: 1px solid rgba(27,44,94,0.25);
+    transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;
+    background: none; border: none; cursor: pointer; width: 100%;
+  }
+  .mobile-menu > a:hover, .mobile-menu .mobile-dropdown-toggle:hover { background: rgba(43,68,148,0.30); color: var(--white); }
+  .mobile-dropdown-menu { display: none; flex-direction: column; background: rgba(0,0,0,0.2); }
+  .mobile-dropdown-menu.active { display: flex; }
+  .mobile-dropdown-menu a {
+    padding: 11px 40px; color: rgba(255,255,255,0.68); text-decoration: none;
+    font-size: 0.85rem; border-bottom: 1px solid rgba(27,44,94,0.15);
+  }
+  .mobile-dropdown-menu a:hover { background: rgba(43,68,148,0.25); color: rgba(255,255,255,0.95); }
+
+  @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+  @media (max-width: 768px) { nav { padding: 10px 0; } .nav-logo-img { height: 36px; } }
+
+  /* ═══════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════ */
+  #hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 0;
+  }
+
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 80px; /* clears fixed navbar */
+  }
+
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.17em;
+    text-transform: uppercase; color: rgba(255,255,255,0.82);
+    margin-bottom: 16px;
+  }
+  .hero-label::before {
+    content: ''; display: block; width: 28px; height: 2px;
+    background: var(--navy-light); flex-shrink: 0;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    color: var(--white); line-height: 1.1; margin-bottom: 18px;
+    letter-spacing: -0.03em; font-weight: 800;
+  }
+  .hero-headline em { color: var(--white); font-style: normal; }
+
+  .hero-sub {
+    font-size: 1.08rem; color: rgba(255,255,255,0.75);
+    line-height: 1.78; max-width: 56ch; margin: 0 auto 32px; font-weight: 400;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+  /* ═══════════════════════════════════════
+     MARQUEE
+  ═══════════════════════════════════════ */
+  .marquee-section { background: var(--navy); padding: 16px 0; overflow: hidden; }
+  .marquee-track { display: flex; gap: 56px; animation: marquee 30s linear infinite; white-space: nowrap; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .marquee-item {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.80); font-size: 0.76rem; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; flex-shrink: 0;
+  }
+  .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.75; }
+
+  /* ═══════════════════════════════════════
+     SERVICES
+  ═══════════════════════════════════════ */
+  #services { background: var(--grey-50); }
+
+  .services-intro { text-align: center; max-width: 900px; margin: 0 auto 68px; }
+  .services-intro .section-label { justify-content: center; color: var(--navy-light); }
+  .services-intro .section-label::before { background: linear-gradient(90deg, var(--navy-mid), var(--navy-light)); }
+  .services-intro .section-subtitle { margin: 0 auto; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .service-card {
+    background: var(--white); border-radius: 22px;
+    border: 1px solid var(--grey-100); position: relative; overflow: hidden;
+    min-height: 230px; padding: 32px 32px 28px; cursor: default;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(27,44,94,0.10); }
+
+  .service-card-content { position: relative; z-index: 2; max-width: 65%; }
+
+  .service-title-wrap { margin-bottom: 20px; }
+  .service-card-desc {
+    font-size: 0.82rem; color: var(--grey-600); line-height: 1.65; margin-bottom: 20px;
+  }
+  .service-title-main {
+    font-family: var(--font-display); font-size: 1.475rem; font-weight: 700;
+    color: var(--navy); line-height: 1.2; display: block;
+  }
+  .service-title-sub {
+    font-family: var(--font-display); font-size: 1.475rem; font-weight: 700;
+    color: var(--navy); line-height: 1.2; display: block;
+  }
+
+  .service-learn-more {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+  .service-learn-btn {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--navy-deep);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .service-learn-btn svg { width: 10px; height: 10px; }
+  .service-card:hover .service-learn-btn { background: var(--navy-light); transform: translateX(4px); }
+  .service-learn-text {
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--grey-600);
+  }
+
+  .service-card-visual {
+    position: absolute; right: 0; bottom: 0;
+    width: 48%; height: 88%; pointer-events: none;
+  }
+  .service-card-visual img {
+    width: 100%; height: 100%; object-fit: contain;
+    object-position: right bottom; display: block;
+    transition: transform 0.35s ease;
+  }
+  .service-card:hover .service-card-visual img { transform: scale(1.05) translateY(-5px); }
+
+  .services-grid .service-card:nth-child(7) { grid-column: 2; }
+
+  /* ═══════════════════════════════════════
+     WHY US
+  ═══════════════════════════════════════ */
+  #why-us { background: linear-gradient(150deg, #EBF1FF 0%, #F1F5FF 50%, #EDF2FA 100%); }
+
+  .why-us-intro { text-align: center; max-width: 900px; margin: 0 auto 68px; }
+  .why-us-intro .section-label { justify-content: center; color: var(--navy-light); }
+  .why-us-intro .section-label::before { background: linear-gradient(90deg, var(--navy-mid), var(--navy-light)); }
+  .why-us-intro .section-subtitle { margin: 0 auto; }
+
+  .why-us-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .why-card {
+    background: var(--white); border-radius: 20px;
+    border: 1px solid var(--grey-100); padding: 40px 32px;
+    text-align: center; cursor: default; box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(27,44,94,0.12); }
+
+  .why-icon-wrap {
+    width: 68px; height: 68px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .why-icon-wrap svg { width: 28px; height: 28px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  .wi-green  { background: #ECFDF5; } .wi-green  svg { stroke: #059669; }
+  .wi-blue   { background: #EFF6FF; } .wi-blue   svg { stroke: #2563EB; }
+  .wi-amber  { background: #FFFBEB; } .wi-amber  svg { stroke: #D97706; }
+  .wi-teal   { background: #F0FDFA; } .wi-teal   svg { stroke: #0D9488; }
+  .wi-purple { background: #F5F3FF; } .wi-purple svg { stroke: #7C3AED; }
+  .wi-rose   { background: #FFF1F2; } .wi-rose   svg { stroke: #E11D48; }
+
+  .why-card-title { font-family: var(--font-display); font-weight: 700; font-size: 1.42rem; color: var(--navy); margin-bottom: 14px; line-height: 1.35; }
+  .why-card-desc { font-size: 0.97rem; color: var(--grey-600); line-height: 1.82; }
+
+  /* ═══════════════════════════════════════
+     CTA INTERMEDIATE
+  ═══════════════════════════════════════ */
+  #cta-intermediate { background: var(--navy); padding: 88px 0; position: relative; overflow: hidden; }
+  .cta-int-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(27,44,94,0.06) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+  .cta-int-inner {
+    position: relative; z-index: 2;
+    background: var(--white); border-radius: var(--radius-xl); padding: 64px 60px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.20);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    overflow: hidden;
+  }
+  .cta-int-inner::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(43,68,148,0.08), transparent);
+    pointer-events: none;
+  }
+  .cta-int-content { position: relative; z-index: 1; }
+  .cta-int-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem); color: var(--navy);
+    font-weight: 700; margin-bottom: 18px; line-height: 1.18; letter-spacing: -0.022em;
+  }
+  .cta-int-title span { color: var(--navy-light); }
+  .cta-int-desc { font-size: 1.06rem; color: var(--grey-600); line-height: 1.85; margin-bottom: 36px; }
+
+  .cta-int-visual {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 260px; position: relative; z-index: 1;
+  }
+
+  .finance-illustration { width: 100%; max-width: 580px; height: auto; display: block; object-fit: contain; }
+
+  /* ═══════════════════════════════════════
+     WHY OUTSOURCE
+  ═══════════════════════════════════════ */
+  #why-outsource { background: var(--white); position: relative; overflow: hidden; }
+  .why-outsource-grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(27,44,94,0.024) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27,44,94,0.024) 1px, transparent 1px);
+    background-size: 66px 66px;
+  }
+
+  .why-outsource-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start; margin-bottom: 72px; position: relative; z-index: 2;
+  }
+  .why-outsource-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.2rem); color: var(--navy);
+    font-weight: 700; line-height: 1.14; letter-spacing: -0.025em;
+  }
+  #why-outsource .section-label { color: var(--navy-light); }
+  #why-outsource .section-label::before { background: linear-gradient(90deg, var(--navy-mid), var(--navy-light)); }
+  .why-outsource-right { padding-top: 6px; }
+  .why-outsource-desc { font-size: 1.06rem; color: var(--grey-600); line-height: 1.85; margin-bottom: 28px; }
+  .why-outsource-link {
+    display: inline-flex; align-items: center; gap: 8px; color: var(--navy);
+    text-decoration: none; font-weight: 700; font-size: 0.95rem;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .why-outsource-link:hover { color: var(--gold-dark); gap: 13px; }
+
+  .why-outsource-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; z-index: 2; }
+
+  .outsource-card {
+    border-radius: 20px; padding: 36px 28px;
+    background: #F4F6FA; border: 1px solid var(--grey-100);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .outsource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); background: var(--navy-deep); border-color: var(--navy-deep); }
+
+  .outsource-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    border: 1.5px solid rgba(27,44,94,0.18); background: transparent;
+    transition: border-color 0.3s ease;
+  }
+  .outsource-icon svg { width: 20px; height: 20px; stroke: var(--navy); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s ease; }
+  .outsource-card:hover .outsource-icon { border-color: rgba(255,255,255,0.28); }
+  .outsource-card:hover .outsource-icon svg { stroke: var(--white); }
+
+  .outsource-card-title { font-weight: 700; font-size: 1.28rem; color: var(--navy); margin-bottom: 12px; line-height: 1.35; transition: color 0.3s ease; }
+  .outsource-card:hover .outsource-card-title { color: var(--white); }
+  .outsource-card-desc { font-size: 1.02rem; color: var(--grey-600); line-height: 1.78; transition: color 0.3s ease; }
+  .outsource-card:hover .outsource-card-desc { color: rgba(255,255,255,0.62); }
+
+  /* ═══════════════════════════════════════
+     TOOLS
+  ═══════════════════════════════════════ */
+  #tools { background: var(--off-white); }
+
+  .tools-intro { text-align: center; max-width: 900px; margin: 0 auto 68px; }
+  .tools-intro .section-label { justify-content: center; color: var(--navy-light); }
+  .tools-intro .section-label::before { background: linear-gradient(90deg, var(--navy-mid), var(--navy-light)); }
+  .tools-intro .section-subtitle { margin: 0 auto; }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+
+  .tool-item {
+    background: var(--white); border: 1px solid var(--grey-100); border-radius: var(--radius);
+    padding: 30px 16px 22px;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 14px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .tool-item::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--navy-deep), var(--navy-light), #5B8FD4);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .tool-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
+  .tool-item:hover::after { transform: scaleX(1); }
+  .tool-item img { width: 52px; height: 52px; object-fit: contain; transition: transform 0.3s ease; }
+  .tool-item img.logo-wide  { width: 110px; height: 46px; }
+  .tool-item img.logo-xwide { width: 140px; height: 42px; }
+  .tool-item:hover img { transform: scale(1.08); }
+  .tool-item-name { font-size: 0.78rem; font-weight: 700; color: var(--grey-600); text-align: center; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.3; }
+
+  /* ═══════════════════════════════════════
+     CTA FINAL
+  ═══════════════════════════════════════ */
+  #cta {
+    background: linear-gradient(142deg, var(--navy-deep) 0%, var(--navy) 55%, #1d3272 100%);
+    position: relative; overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(201,168,76,0.055) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+  .cta-stripe {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.30;
+  }
+  .cta-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+
+  .cta-left .section-label { color: rgba(201,168,76,0.82); }
+  .cta-left .section-label::before { background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
+  .cta-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--white);
+    line-height: 1.12; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.025em;
+  }
+  .cta-left p { color: rgba(255,255,255,0.66); font-size: 1.1rem; line-height: 1.82; margin-bottom: 36px; }
+  .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .cta-social-proof { margin-top: 36px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .cta-avatars { display: flex; }
+  .cta-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.32);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.62rem; font-weight: 700; margin-left: -10px;
+  }
+  .cta-avatar:first-child { margin-left: 0; }
+  .cta-avatar.av1 { background: linear-gradient(135deg, var(--navy-mid), var(--navy-light)); color: white; }
+  .cta-avatar.av2 { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--navy-deep); }
+  .cta-avatar.av3 { background: linear-gradient(135deg, var(--navy-light), var(--navy-mid)); color: white; }
+  .cta-proof-text { color: rgba(255,255,255,0.70); font-size: 0.82rem; font-weight: 500; }
+  .cta-rating { color: rgba(255,255,255,0.36); font-size: 0.76rem; }
+  .cta-rating strong { color: var(--gold-light); letter-spacing: 0.02em; }
+
+  .cta-form-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 22px; padding: 40px; backdrop-filter: blur(12px);
+  }
+  .cta-form-title { color: var(--white); font-weight: 700; font-size: 1.06rem; margin-bottom: 28px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; color: rgba(255,255,255,0.62); font-size: 0.75rem; font-weight: 600; margin-bottom: 7px; letter-spacing: 0.03em; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 13px 16px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 9px; color: var(--white); font-family: var(--font-body);
+    font-size: 0.88rem; outline: none; transition: border-color 0.2s ease;
+  }
+  .form-group input::placeholder { color: rgba(255,255,255,0.26); }
+  .form-group input:focus, .form-group select:focus { border-color: rgba(201,168,76,0.42); }
+  .form-group select { appearance: none; cursor: pointer; }
+  .form-group select option { background: var(--navy-deep); color: var(--white); }
+  .cta-form-submit {
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    color: var(--navy-deep); border: none; border-radius: 9px;
+    font-family: var(--font-body); font-weight: 700; font-size: 0.92rem;
+    cursor: pointer; margin-top: 8px;
+    box-shadow: 0 4px 18px rgba(201,168,76,0.30);
+    transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .cta-form-submit:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+  .cta-form-note { color: rgba(255,255,255,0.30); font-size: 0.72rem; margin-top: 13px; text-align: center; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════ */
+  footer { background: var(--navy-deep); padding: 80px 0 32px; border-top: 1px solid rgba(201,168,76,0.10); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 60px; }
+
+  .footer-logo-text { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
+  .footer-logo-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+  .footer-logo-name span { color: var(--gold); }
+  .footer-logo-tagline { font-size: 0.5rem; color: var(--grey-400); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; line-height: 1; }
+  .footer-brand-desc { color: rgba(255,255,255,0.40); font-size: 0.86rem; line-height: 1.78; max-width: 280px; margin-bottom: 28px; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 38px; height: 38px; border-radius: 9px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.14);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.44); text-decoration: none; font-size: 0.85rem;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .footer-social a:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-deep); }
+  .footer-col-title { color: var(--white); font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 22px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .footer-links a { color: rgba(255,255,255,0.40); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 16px; }
+  .contact-icon { color: var(--gold); flex-shrink: 0; font-size: 0.95rem; width: 1rem; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .footer-contact-item span, .footer-contact-item a { color: rgba(255,255,255,0.56); font-size: 0.85rem; line-height: 1.5; text-decoration: none; transition: color 0.2s; }
+  .footer-contact-item a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { color: rgba(255,255,255,0.28); font-size: 0.78rem; }
+  .footer-credit { color: rgba(255,255,255,0.28); font-size: 0.78rem; }
+  .footer-credit a { color: rgba(255,255,255,0.36); text-decoration: none; transition: color 0.2s; }
+  .footer-credit a:hover { color: var(--gold-light); }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════ */
+  @media (max-width: 1100px) {
+    .tools-grid { grid-template-columns: repeat(4, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid .service-card:nth-child(7) { grid-column: auto; }
+    .why-outsource-cards { grid-template-columns: repeat(2, 1fr); }
+    .cta-int-inner { grid-template-columns: 1fr; gap: 40px; }
+    .cta-int-visual { min-height: 180px; }
+  }
+  @media (max-width: 900px) {
+    .section { padding: 84px 0; }
+    .why-us-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-outsource-header { grid-template-columns: 1fr; gap: 32px; }
+    .cta-inner { grid-template-columns: 1fr; gap: 52px; }
+  }
+  @media (max-width: 768px) {
+    .section { padding: 72px 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-us-grid { grid-template-columns: 1fr; }
+    .why-outsource-cards { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-brand-desc { max-width: 100%; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-stats { gap: 24px; }
+  }
+  @media (max-width: 540px) {
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-headline { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .hero-actions { flex-direction: column; }
+    .cta-actions { flex-direction: column; }
+    .cta-int-inner { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="AB LedgerWorks" class="nav-logo-img">
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item">
+        <a href="services.html" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-title">Core Services</div>
+          <a href="services.html#svc-bookkeeping">Bookkeeping &amp; Accounting</a>
+          <a href="services.html#svc-reporting">Financial Reporting &amp; Compliance</a>
+          <a href="services.html#svc-cfo">Virtual CFO Services</a>
+          <a href="services.html#svc-advisory">Advisory Services</a>
+          <a href="services.html#svc-payroll">Payroll Services</a>
+          <a href="services.html#svc-analytics">Data &amp; Business Analytics</a>
+          <a href="services.html#svc-adhoc">Adhoc Projects &amp; Custom Engagements</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="pricing.html">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#cta" class="btn btn-navy" style="padding:13px 32px;font-size:0.82rem;">Schedule a Meeting</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="about.html" onclick="toggleMenu()">About Us</a>
+  <button class="mobile-dropdown-toggle" onclick="toggleServicesDropdown(event)">
+    Services
+    <span class="mobile-arrow" style="display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid rgba(255,255,255,0.6);transition:transform 0.3s;"></span>
+  </button>
+  <div class="mobile-dropdown-menu" id="servicesDropdown">
+    <a href="services.html#svc-bookkeeping" onclick="toggleMenu()">Bookkeeping &amp; Accounting</a>
+    <a href="services.html#svc-reporting" onclick="toggleMenu()">Financial Reporting &amp; Compliance</a>
+    <a href="services.html#svc-cfo" onclick="toggleMenu()">Virtual CFO Services</a>
+    <a href="services.html#svc-advisory" onclick="toggleMenu()">Advisory Services</a>
+    <a href="services.html#svc-payroll" onclick="toggleMenu()">Payroll Services</a>
+    <a href="services.html#svc-analytics" onclick="toggleMenu()">Data &amp; Business Analytics</a>
+    <a href="services.html#svc-adhoc" onclick="toggleMenu()">Adhoc Projects &amp; Custom Engagements</a>
+  </div>
+  <a href="pricing.html" onclick="toggleMenu()">Pricing</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact Us</a>
+  <a href="#cta" onclick="toggleMenu()" style="background:rgba(43,68,148,0.35);color:rgba(255,255,255,0.92);">Schedule a Meeting →</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <img src="hero.jpg" alt="" class="hero-img" aria-hidden="true">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">Your Extended Global Team</div>
+      <h1 class="hero-headline">Expert Financial Services,<br><em>Delivered Offshore.</em></h1>
+      <p class="hero-sub">AB LedgerWorks delivers end-to-end accounting and financial services to US-based startups, SMEs, and accounting firms — with the precision of a Big 4 firm and the agility of a startup.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-navy">Explore Services</a>
+        <a href="#cta" class="btn btn-outline-white">Book a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MARQUEE ═══════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><div class="marquee-dot"></div>Bookkeeping &amp; Accounting</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Virtual CFO Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Payroll Management</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Financial Reporting</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Business Analytics</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Advisory Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Compliance Support</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Bookkeeping &amp; Accounting</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Virtual CFO Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Payroll Management</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Financial Reporting</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Business Analytics</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Advisory Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Compliance Support</div>
+  </div>
+</div>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="services-intro">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Complete Finance Solutions</h2>
+      <p class="section-subtitle">End-to-end financial support — cost-effective, scalable, and built on deep expertise.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Bookkeeping</span>
+            <span class="service-title-sub">&amp; Accounting</span>
+          </div>          <a href="services.html#svc-bookkeeping" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/bookkeeping.svg" alt="Bookkeeping &amp; Accounting">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Financial</span>
+            <span class="service-title-sub">Reporting</span>
+          </div>          <a href="services.html#svc-reporting" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/Financial%20Reporting%20%26%20Compliance.svg" alt="Financial Reporting &amp; Compliance">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Virtual</span>
+            <span class="service-title-sub">CFO</span>
+          </div>          <a href="services.html#svc-cfo" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/Virtual%20CFO.svg" alt="Virtual CFO Services">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Advisory</span>
+            <span class="service-title-sub">Services</span>
+          </div>          <a href="services.html#svc-advisory" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/advisory.svg" alt="Advisory Services">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Payroll</span>
+            <span class="service-title-sub">Services</span>
+          </div>          <a href="services.html#svc-payroll" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/payroll.svg" alt="Payroll Services">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Data</span>
+            <span class="service-title-sub">Analytics</span>
+          </div>          <a href="services.html#svc-analytics" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/Data%20%26%20Business%20Analytics.svg" alt="Data &amp; Business Analytics">
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-content">
+          <div class="service-title-wrap">
+            <span class="service-title-main">Adhoc</span>
+            <span class="service-title-sub">Projects</span>
+          </div>          <a href="services.html#svc-adhoc" class="service-learn-more">
+            <span class="service-learn-text">Learn More</span>
+            <span class="service-learn-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="service-card-visual">
+          <img src="assests/home/Adhoc%20Projects.svg" alt="Adhoc Projects">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHY US ═══════════════ -->
+<section id="why-us" class="section">
+  <div class="container">
+    <div class="why-us-intro">
+      <div class="section-label">Why AB LedgerWorks</div>
+      <h2 class="section-title">Built for Trust, Designed to Scale.</h2>
+      <p class="section-subtitle">Every engagement is built on transparency, precision, and a genuine commitment to your success.</p>
+    </div>
+
+    <div class="why-us-grid">
+
+      <!-- Cost Efficiency -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-green">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="why-card-title">Cost Efficiency</h3>
+        <p class="why-card-desc">Save 50–70% on accounting costs without compromising quality, speed, or expertise — keeping more capital where it belongs.</p>
+      </div>
+
+      <!-- Skilled Professionals -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-blue">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3 class="why-card-title">Skilled Professionals</h3>
+        <p class="why-card-desc">CPAs, CAs, and MBAs with deep experience across US GAAP, IFRS, and global financial standards — fully vetted and continuously trained.</p>
+      </div>
+
+      <!-- Data Security -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-amber">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3 class="why-card-title">Data Security &amp; Compliance</h3>
+        <p class="why-card-desc">Enterprise-grade security, NDA protection, and SOC-compliant processes that safeguard your data and ensure complete confidentiality.</p>
+      </div>
+
+      <!-- Scalable Support -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-teal">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3 class="why-card-title">Scalable Support</h3>
+        <p class="why-card-desc">Start small and scale seamlessly — no long-term lock-ins, pure flexibility that adapts to your business at every stage of growth.</p>
+      </div>
+
+      <!-- Time Zone Advantage -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-purple">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="why-card-title">Time Zone Advantage</h3>
+        <p class="why-card-desc">US-overlapping hours with extended coverage ensure faster turnarounds, real-time updates, and a team that's always within reach.</p>
+      </div>
+
+      <!-- Accuracy & Reliability -->
+      <div class="why-card">
+        <div class="why-icon-wrap wi-rose">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="why-card-title">Accuracy &amp; Reliability</h3>
+        <p class="why-card-desc">Multi-level QA and peer-review processes ensure 99.8%+ accuracy on every deliverable — so you can act on your financials with confidence.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ CTA INTERMEDIATE ═══════════════ -->
+<section id="cta-intermediate">
+  <div class="cta-int-bg"></div>
+  <div class="container">
+    <div class="cta-int-inner">
+      <div class="cta-int-content">
+        <h2 class="cta-int-title">Ready to Transform Your Financial <span>Management?</span></h2>
+        <p class="cta-int-desc">Understand the scope of financial transformation we offer. Let's discuss your accounting needs today.</p>
+        <a href="#cta" class="btn btn-navy">Schedule a Demo</a>
+      </div>
+      <div class="cta-int-visual">
+        <img src="assests/home/home_cta.png" alt="" class="finance-illustration" aria-hidden="true">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHY OUTSOURCING ═══════════════ -->
+<section id="why-outsource" class="section">
+  <div class="why-outsource-grid-bg"></div>
+  <div class="container">
+
+    <div class="why-outsource-header">
+      <div>
+        <div class="section-label">The Case for Outsourcing</div>
+        <h2 class="why-outsource-title">Why Outsource Finance?</h2>
+      </div>
+      <div class="why-outsource-right">
+        <p class="why-outsource-desc">Outsourcing your accounting involves crafting a comprehensive approach focused on freeing up your team while ensuring accuracy and compliance every step of the way.</p>
+        <a href="#cta" class="why-outsource-link">
+          Get Started
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="why-outsource-cards">
+
+      <div class="outsource-card">
+        <div class="outsource-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="outsource-card-title">Strategic Focus</div>
+        <div class="outsource-card-desc">Free your leadership team to focus on growth while we own every aspect of your financial operations.</div>
+      </div>
+
+      <div class="outsource-card">
+        <div class="outsource-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="outsource-card-title">Risk Reduction</div>
+        <div class="outsource-card-desc">Expert oversight ensures full compliance, prevents costly errors, and keeps audits stress-free.</div>
+      </div>
+
+      <div class="outsource-card">
+        <div class="outsource-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8 10 1 17"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="outsource-card-title">Speed &amp; Agility</div>
+        <div class="outsource-card-desc">Faster month-end closes and real-time financial insights that power smarter, quicker decisions.</div>
+      </div>
+
+      <div class="outsource-card">
+        <div class="outsource-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="outsource-card-title">Scalability</div>
+        <div class="outsource-card-desc">Our support scales instantly with your business — no hiring cycles, no training overhead.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TOOLS ═══════════════ -->
+<section id="tools" class="section">
+  <div class="container">
+    <div class="tools-intro">
+      <div class="section-label">Technology Stack</div>
+      <h2 class="section-title">Tools You Already Trust</h2>
+      <p class="section-subtitle">We work natively with the platforms your business already runs on — zero disruption, instant value.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/freshbooks.svg" alt="FreshBooks" class="logo-wide">
+        <span class="tool-item-name">FreshBooks</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/quickbooks.svg" alt="QuickBooks">
+        <span class="tool-item-name">QuickBooks</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/xero.svg" alt="Xero">
+        <span class="tool-item-name">Xero</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/zoho.svg" alt="Zoho" class="logo-wide">
+        <span class="tool-item-name">Zoho</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/wave.png" alt="Wave" class="logo-wide">
+        <span class="tool-item-name">Wave</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/sage.svg" alt="Sage" class="logo-wide">
+        <span class="tool-item-name">Sage</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/netsuite.svg" alt="NetSuite">
+        <span class="tool-item-name">NetSuite</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/bill_com.png" alt="Bill.com" class="logo-xwide">
+        <span class="tool-item-name">Bill.com</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/free_agent.png" alt="FreeAgent" class="logo-xwide">
+        <span class="tool-item-name">FreeAgent</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/taxcalc.png" alt="TaxCalc" class="logo-xwide">
+        <span class="tool-item-name">TaxCalc</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/Access%20financial.svg" alt="Access Financial" class="logo-wide">
+        <span class="tool-item-name">Access Fin.</span>
+      </div>
+      <div class="tool-item">
+        <img src="assests/home/tools_logo/bright%20pay.png" alt="BrightPay" class="logo-xwide">
+        <span class="tool-item-name">BrightPay</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CTA FINAL ═══════════════ -->
+<section id="cta" class="section">
+  <div class="cta-bg"></div>
+  <div class="cta-stripe"></div>
+  <div class="container">
+    <div class="cta-inner">
+
+      <div class="cta-left">
+        <div class="section-label">Get Started</div>
+        <h2>Ready to Streamline Your Finance Operations?</h2>
+        <p>Book a free 30-minute consultation with our team. We'll assess your current setup and show you exactly how AB LedgerWorks can help — no obligation, no pitch decks.</p>
+        <div class="cta-actions">
+          <a href="#cta" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book a Free Consultation
+          </a>
+          <a href="mailto:hello@ableagerworks.com" class="btn btn-outline-white">Email Us →</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="cta-form-card">
+          <div class="cta-form-title">Request a Free Consultation</div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label>Work Email</label>
+            <input type="email" placeholder="jane@company.com">
+          </div>
+          <div class="form-group">
+            <label>Company / Business Type</label>
+            <input type="text" placeholder="Startup / SME / Accounting Firm">
+          </div>
+          <div class="form-group">
+            <label>Service of Interest</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Bookkeeping &amp; Accounting</option>
+              <option>Virtual CFO Services</option>
+              <option>Payroll Services</option>
+              <option>Financial Reporting</option>
+              <option>Data &amp; Business Analytics</option>
+              <option>Advisory Services</option>
+              <option>Adhoc Project</option>
+            </select>
+          </div>
+          <button class="cta-form-submit" onclick="handleSubmit(this)">Book My Free Consultation →</button>
+          <p class="cta-form-note">No spam. No sales calls unless you request one. We respond within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+
+      <div>
+        <div class="footer-logo-text">
+          <div class="footer-logo-name">AB <span>LedgerWorks</span></div>
+          <div class="footer-logo-tagline">Your Extended Global Team</div>
+        </div>
+        <p class="footer-brand-desc">Your offshore finance partner — delivering precision accounting, CFO-level advisory, and scalable financial solutions to US and global businesses.</p>
+        <div class="footer-social">
+          <a href="#" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" title="Twitter / X" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="mailto:hello@ableagerworks.com" title="Email" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#svc-bookkeeping">Bookkeeping &amp; Accounting</a></li>
+          <li><a href="services.html#svc-reporting">Financial Reporting</a></li>
+          <li><a href="services.html#svc-cfo">Virtual CFO</a></li>
+          <li><a href="services.html#svc-payroll">Payroll Services</a></li>
+          <li><a href="services.html#svc-analytics">Business Analytics</a></li>
+          <li><a href="services.html#svc-advisory">Advisory Services</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope contact-icon"></i>
+          <a href="mailto:hello@ableagerworks.com">hello@ableagerworks.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-brands fa-whatsapp contact-icon"></i>
+          <a href="https://wa.me/" target="_blank">+1 (XXX) XXX-XXXX</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot contact-icon"></i>
+          <span>Surat, India</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 AB LedgerWorks. All rights reserved.</div>
+      <div class="footer-credit">Made by <a href="https://www.jddigitalweb.in/" target="_blank">JDDigitalWeb</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('scrollProgress').style.width = pct + '%';
+  });
+
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('active');
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+
+  function toggleServicesDropdown(event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById('servicesDropdown');
+    dropdown.classList.toggle('active');
+    const arrow = event.currentTarget.querySelector('.mobile-arrow');
+    if (arrow) arrow.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+
+  document.addEventListener('click', function(e) {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (!navbar.contains(e.target) && !mobileMenu.contains(e.target) && mobileMenu.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Request Sent! We\'ll be in touch within 24h';
+    btn.style.background = 'rgba(255,255,255,0.12)';
+    btn.style.color = 'var(--gold-light)';
+    btn.disabled = true;
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
