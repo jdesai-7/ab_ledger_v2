@@ -342,6 +342,13 @@
   /* ═══════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════ */
+  @media (min-width: 1600px) {
+    .about-hero { max-height: 900px; }
+    .about-hero-content { padding-top: 80px; }
+  }
+  @media (max-width: 1024px) {
+    .about-hero-content { padding-top: 100px; }
+  }
   @media (max-width: 900px) {
     .who-grid { grid-template-columns: 1fr; gap: 48px; }
     .mission-grid { grid-template-columns: 1fr; }
@@ -352,12 +359,15 @@
     .value-card:nth-child(5) { grid-column: span 1; }
   }
   @media (max-width: 768px) {
+    .about-hero-content { padding-top: 80px; }
     .about-hero { height: 50vh; min-height: 380px; }
     .about-cta-actions { flex-direction: column; align-items: center; }
   }
   @media (max-width: 540px) {
     .about-hero { height: 60vh; }
-    .about-hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+    .about-hero-label { font-size: 9px; }
+    .about-hero-title { font-size: clamp(2.4rem, 8vw, 3rem); }
+    .about-hero-sub { font-size: 0.88rem; }
     .values-grid { grid-template-columns: 1fr; }
   }
 

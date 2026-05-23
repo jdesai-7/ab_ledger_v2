@@ -416,13 +416,20 @@
   /* ═══════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════ */
+  @media (min-width: 1600px) {
+    #hero { max-height: 900px; }
+    .hero-content { padding-top: 80px; }
+  }
   @media (max-width: 1100px) {
     .tools-grid { grid-template-columns: repeat(4, 1fr); }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
-  @media (max-width: 1024px) {
+  @media (max-width: 1280px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .services-grid .service-card:nth-child(7) { grid-column: auto; }
+  }
+  @media (max-width: 1024px) {
+    .hero-content { padding-top: 100px; }
     .why-outsource-cards { grid-template-columns: repeat(2, 1fr); }
     .cta-int-inner { grid-template-columns: 1fr; gap: 40px; }
     .cta-int-visual { min-height: 180px; }
@@ -434,20 +441,31 @@
     .cta-inner { grid-template-columns: 1fr; gap: 52px; }
   }
   @media (max-width: 768px) {
+    .hero-content { padding-top: 80px; }
     .section { padding: 72px 0; }
-    .services-grid { grid-template-columns: 1fr; }
-    .why-us-grid { grid-template-columns: 1fr; }
-    .why-outsource-cards { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: repeat(3, 1fr); }
     .footer-top { grid-template-columns: 1fr; gap: 36px; }
     .footer-brand-desc { max-width: 100%; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .hero-stats { gap: 24px; }
   }
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .services-grid .service-card:nth-child(7) { grid-column: auto; }
+    .why-us-grid { grid-template-columns: 1fr; }
+    .why-outsource-cards { grid-template-columns: 1fr; }
+  }
   @media (max-width: 540px) {
     .tools-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-headline { font-size: clamp(2rem, 7vw, 2.6rem); }
-    .hero-actions { flex-direction: column; }
+    .hero-label { font-size: 9px; }
+    .hero-headline { font-size: clamp(2.4rem, 8vw, 3rem); }
+    .hero-sub { font-size: 0.88rem; }
+    .hero-actions { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .hero-actions .btn { padding: 11px 18px; font-size: 0.75rem; }
+    .marquee-item { font-size: 0.56rem; }
+    .section-subtitle { font-size: 0.9rem; }
+    .service-title-main,
+    .service-title-sub { font-size: 1.35rem; }
     .cta-actions { flex-direction: column; }
     .cta-int-inner { padding: 40px 28px; }
   }

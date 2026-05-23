@@ -218,12 +218,27 @@
   /* ═══════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════ */
+  @media (min-width: 1600px) {
+    .pricing-hero { max-height: 900px; }
+    .pricing-hero-content { padding-top: 80px; }
+  }
+  @media (max-width: 1024px) {
+    .pricing-hero-content { padding-top: 100px; }
+  }
   @media (max-width: 900px) {
     .pricing-hero { height: 60vh; min-height: 420px; }
     .plan-card { grid-template-columns: 1fr; }
     .plan-card-right { border-left: none; border-top: 1px solid var(--grey-100); }
     .plan-card-left, .plan-card-right { padding: 40px 32px; }
     .faq-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .pricing-hero-content { padding-top: 80px; }
+  }
+  @media (max-width: 540px) {
+    .pricing-hero-label { font-size: 9px; }
+    .pricing-hero-title { font-size: clamp(2.4rem, 8vw, 3rem); }
+    .pricing-hero-sub { font-size: 0.88rem; }
   }
 
 </style>

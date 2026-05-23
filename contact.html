@@ -165,11 +165,26 @@
   /* ═══════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════ */
+  @media (min-width: 1600px) {
+    .contact-hero { max-height: 900px; }
+    .contact-hero-content { padding-top: 80px; }
+  }
+  @media (max-width: 1024px) {
+    .contact-hero-content { padding-top: 100px; }
+  }
   @media (max-width: 900px) {
     .contact-hero { height: 60vh; min-height: 420px; }
     .contact-grid { grid-template-columns: 1fr; gap: 56px; }
     .form-row { grid-template-columns: 1fr; }
     .contact-form-card { padding: 36px 28px; }
+  }
+  @media (max-width: 768px) {
+    .contact-hero-content { padding-top: 80px; }
+  }
+  @media (max-width: 540px) {
+    .contact-hero-label { font-size: 9px; }
+    .contact-hero-title { font-size: clamp(2.4rem, 8vw, 3rem); }
+    .contact-hero-sub { font-size: 0.88rem; }
   }
 
 </style>
