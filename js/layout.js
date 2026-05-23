@@ -86,11 +86,12 @@
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
           <li><a href="/services.html#svc-bookkeeping">Bookkeeping &amp; Accounting</a></li>
-          <li><a href="/services.html#svc-reporting">Financial Reporting</a></li>
-          <li><a href="/services.html#svc-cfo">Virtual CFO</a></li>
-          <li><a href="/services.html#svc-payroll">Payroll Services</a></li>
-          <li><a href="/services.html#svc-analytics">Business Analytics</a></li>
+          <li><a href="/services.html#svc-reporting">Financial Reporting &amp; Compliance</a></li>
+          <li><a href="/services.html#svc-cfo">Virtual CFO Services</a></li>
           <li><a href="/services.html#svc-advisory">Advisory Services</a></li>
+          <li><a href="/services.html#svc-payroll">Payroll Services</a></li>
+          <li><a href="/services.html#svc-analytics">Data &amp; Business Analytics</a></li>
+          <li><a href="/services.html#svc-adhoc">Adhoc &amp; Custom Engagements</a></li>
         </ul>
       </div>
 

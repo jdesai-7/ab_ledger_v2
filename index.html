@@ -22,13 +22,8 @@
     position: relative; overflow: hidden;
     display: flex; align-items: center;
     padding: 0;
-  }
-
-  .hero-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
-    display: block;
+    background-image: url('/hero.jpg');
+    background-size: cover; background-position: center top;
   }
 
   .hero-overlay {
@@ -471,7 +466,6 @@
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
-  <img src="hero.jpg" alt="" class="hero-img" aria-hidden="true">
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content">
@@ -875,33 +869,35 @@
       <div>
         <div class="cta-form-card">
           <div class="cta-form-title">Request a Free Consultation</div>
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="Jane Smith">
-          </div>
-          <div class="form-group">
-            <label>Work Email</label>
-            <input type="email" placeholder="jane@company.com">
-          </div>
-          <div class="form-group">
-            <label>Company / Business Type</label>
-            <input type="text" placeholder="Startup / SME / Accounting Firm">
-          </div>
-          <div class="form-group">
-            <label>Service of Interest</label>
-            <select>
-              <option value="">Select a service...</option>
-              <option>Bookkeeping &amp; Accounting</option>
-              <option>Virtual CFO Services</option>
-              <option>Payroll Services</option>
-              <option>Financial Reporting</option>
-              <option>Data &amp; Business Analytics</option>
-              <option>Advisory Services</option>
-              <option>Adhoc Project</option>
-            </select>
-          </div>
-          <button class="cta-form-submit" onclick="handleSubmit(this)">Book My Free Consultation →</button>
-          <p class="cta-form-note">No spam. No sales calls unless you request one. We respond within 24 hours.</p>
+          <form name="home-consultation" method="POST" netlify>
+            <input type="hidden" name="form-name" value="home-consultation">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label>Work Email</label>
+              <input type="email" name="email" placeholder="jane@company.com">
+            </div>
+            <div class="form-group">
+              <label>Company / Business Type</label>
+              <input type="text" name="company" placeholder="Startup / SME / Accounting Firm">
+            </div>
+            <div class="form-group">
+              <label>Service of Interest</label>
+              <select name="service">
+                <option value="">Select a service...</option>
+                <option>Bookkeeping &amp; Accounting</option>
+                <option>Virtual CFO Services</option>
+                <option>Payroll Services</option>
+                <option>Financial Reporting</option>
+                <option>Data &amp; Business Analytics</option>
+                <option>Advisory Services</option>
+                <option>Adhoc Project</option>
+              </select>
+            </div>
+            <button type="button" class="cta-form-submit" onclick="handleSubmit(this)">Book My Free Consultation →</button>
+          </form>
         </div>
       </div>
 
@@ -929,11 +925,19 @@
     }, 3000);
   })();
 
-  function handleSubmit(btn) {
+  async function handleSubmit(btn) {
+    const form = btn.closest('form');
+    btn.disabled = true;
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+    } catch(e) {}
     btn.textContent = '✓ Request Sent! We\'ll be in touch within 24h';
     btn.style.background = 'rgba(255,255,255,0.12)';
     btn.style.color = 'var(--accent-light)';
-    btn.disabled = true;
   }
 </script>
 </body>
