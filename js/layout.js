@@ -49,10 +49,12 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
-  <button class="mobile-dropdown-toggle" id="mobileServicesToggle">
-    Services
-    <span class="mobile-arrow" style="display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid rgba(255,255,255,0.6);transition:transform 0.3s;"></span>
-  </button>
+  <div class="mobile-dropdown-row">
+    <a href="services.html" class="mobile-dropdown-link">Services</a>
+    <button class="mobile-dropdown-toggle" id="mobileServicesToggle">
+      <span class="mobile-arrow" style="display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid rgba(255,255,255,0.6);transition:transform 0.3s;"></span>
+    </button>
+  </div>
   <div class="mobile-dropdown-menu" id="servicesDropdown">
     <a href="services.html#svc-bookkeeping">Bookkeeping &amp; Accounting</a>
     <a href="services.html#svc-reporting">Financial Reporting &amp; Compliance</a>
@@ -113,7 +115,7 @@
         </div>
         <div class="footer-contact-item">
           <i class="fa-brands fa-whatsapp contact-icon"></i>
-          <a href="https://wa.me/" target="_blank">+1 (XXX) XXX-XXXX</a>
+          <a href="https://wa.me/918905313301" target="_blank">+91 8905313301</a>
         </div>
         <div class="footer-contact-item">
           <i class="fa-solid fa-location-dot contact-icon"></i>
@@ -153,6 +155,7 @@
     const progress = document.getElementById('scrollProgress');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
+      if (mobileMenu.classList.contains('active')) positionMenu();
       if (progress) {
         const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
         progress.style.width = pct + '%';
@@ -163,9 +166,16 @@
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
+    function positionMenu() {
+      const h = navbar.getBoundingClientRect().height;
+      mobileMenu.style.top = h + 'px';
+      mobileMenu.style.maxHeight = (window.innerHeight - h) + 'px';
+    }
+
     function toggleMenu() {
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
+      if (mobileMenu.classList.contains('active')) positionMenu();
     }
 
     hamburger.addEventListener('click', toggleMenu);

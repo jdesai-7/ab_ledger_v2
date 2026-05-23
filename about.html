@@ -171,6 +171,9 @@
     .mv-index-rule { display: none; }
     .mv-content { padding-left: 0; }
   }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    #our-mission::after { right: auto; left: -10px; }
+  }
   @media (max-width: 768px) {
     #our-mission, #our-vision { padding: 72px 0; }
     #our-mission::after, #our-vision::after { display: none; }
@@ -305,7 +308,7 @@
     .team-profile,
     .team-profile.flip { grid-template-columns: 1fr; gap: 36px; }
     .team-profile-photo { order: 1 !important; }
-    .team-profile-photo img { aspect-ratio: 3 / 2; }
+    .team-profile-photo img { aspect-ratio: 4 / 5; object-position: center top; }
     .team-profile-content { order: 2 !important; }
   }
 
@@ -360,15 +363,19 @@
   }
   @media (max-width: 768px) {
     .about-hero-content { padding-top: 80px; }
-    .about-hero { height: 50vh; min-height: 380px; }
+    .about-hero { height: 85vh; min-height: 380px; }
     .about-cta-actions { flex-direction: column; align-items: center; }
   }
   @media (max-width: 540px) {
-    .about-hero { height: 60vh; }
+    .about-hero { height: 85vh; }
     .about-hero-label { font-size: 9px; }
     .about-hero-title { font-size: clamp(2.4rem, 8vw, 3rem); }
     .about-hero-sub { font-size: 0.88rem; }
     .values-grid { grid-template-columns: 1fr; }
+    .value-title { font-size: 1.35rem; }
+    .who-title { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .mv-heading { font-size: clamp(2rem, 7vw, 2.8rem); }
+    #our-mission, #our-vision { overflow: hidden; }
   }
 
 </style>
@@ -506,7 +513,7 @@
 
     <div class="team-header">
       <div class="section-label">Meet the Team</div>
-      <h2 class="section-title" style="white-space:nowrap;text-align:center;">The People Behind the Numbers</h2>
+      <h2 class="section-title" style="text-align:center;">The People Behind the Numbers</h2>
       <p class="section-subtitle" style="margin:0 auto;">Our leadership brings decades of combined experience in accounting, auditing, and financial advisory — delivering precision-driven results for every client.</p>
     </div>
 
