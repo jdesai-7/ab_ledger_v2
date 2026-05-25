@@ -246,27 +246,28 @@
 
   .team-alt-bg {
     background: var(--off-white);
-    padding: 108px 0;
+    padding: 72px 0;
   }
   .team-white-bg {
     background: var(--white);
-    padding: 108px 0;
+    padding: 72px 0;
   }
 
   /* Content wider (3fr), image narrower (2fr); flip inverts the columns */
   .team-profile {
-    display: grid; grid-template-columns: 2fr 3fr;
-    gap: 72px; align-items: center;
+    display: grid; grid-template-columns: 1fr 2.5fr;
+    gap: 60px; align-items: stretch;
   }
-  .team-profile.flip { grid-template-columns: 3fr 2fr; }
+  .team-profile.flip { grid-template-columns: 2.5fr 1fr; }
 
   .team-profile-photo {
     border-radius: var(--radius-lg); overflow: hidden;
     background: var(--grey-50);
+    min-height: 320px;
   }
   .team-profile-photo img {
-    width: 100%; display: block;
-    aspect-ratio: 4 / 5; object-fit: cover; object-position: center center;
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center center;
   }
 
   .team-profile.flip .team-profile-photo { order: 2; }
@@ -307,9 +308,9 @@
 
   @media (max-width: 900px) {
     .team-profile,
-    .team-profile.flip { grid-template-columns: 1fr; gap: 36px; }
-    .team-profile-photo { order: 1 !important; }
-    .team-profile-photo img { aspect-ratio: 4 / 5; object-position: center top; }
+    .team-profile.flip { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+    .team-profile-photo { order: 1 !important; min-height: 0; aspect-ratio: 4 / 5; }
+    .team-profile-photo img { height: auto; aspect-ratio: 4 / 5; object-position: center top; }
     .team-profile-content { order: 2 !important; }
   }
 
@@ -532,9 +533,8 @@
           <span class="team-tag"><i class="fa-solid fa-briefcase"></i> 10+ Years</span>
         </div>
         <div class="team-bio">
-          <p>CA Mohit Asawa is a highly qualified and experienced professional with over 10 years of expertise in accounting, auditing, finance, and taxation. As a Chartered Accountant and a certified QuickBooks expert, he combines strong technical knowledge with practical business insights.</p>
-          <p>He has advised founders and CEOs of small to mid-sized companies on accounting and financial reporting, helping them make informed financial decisions and strengthen their operations.</p>
-          <p>Known for his reliability and client-centric approach, Mohit has built a strong reputation for delivering consistent, high-quality results and maintaining long-term professional relationships.</p>
+          <p>CA Mohit Asawa is a qualified professional with 10+ years of experience in accounting, auditing, finance, and taxation. A Chartered Accountant and certified QuickBooks expert, he has advised founders and CEOs of small to mid-sized businesses on accounting and financial reporting to support better financial decisions and business growth.</p>
+          <p>Known for his reliable and client-focused approach, he consistently delivers high-quality results and builds long-term professional relationships.</p>
         </div>
       </div>
     </div>
@@ -542,37 +542,12 @@
   </div>
 </section>
 
-<!-- Naveen — off-white bg, content left, photo right -->
+<!-- Muskan — off-white bg, content left, photo right -->
 <div class="team-alt-bg">
   <div class="container">
     <div class="team-profile flip">
       <div class="team-profile-photo">
-        <picture><source srcset="images/mohit.webp" type="image/webp"><img src="images/mohit.png" alt="CA Naveen Bhura" loading="lazy"></picture>
-      </div>
-      <div class="team-profile-content">
-        <div class="team-role-label">Co-Founder</div>
-        <div class="team-name">CA Naveen Bhura</div>
-        <div class="team-tags">
-          <span class="team-tag"><i class="fa-solid fa-certificate"></i> Chartered Accountant</span>
-          <span class="team-tag"><i class="fa-solid fa-circle-check"></i> QuickBooks Specialist</span>
-          <span class="team-tag"><i class="fa-solid fa-briefcase"></i> 10+ Years</span>
-        </div>
-        <div class="team-bio">
-          <p>CA Naveen Bhura is a qualified professional with over a decade of experience in the accounting and finance industry. He specialises in QuickBooks and brings a strong foundation in audit and assurance.</p>
-          <p>At AB Ledgerworks LLP, Naveen's vision is to empower businesses worldwide with accurate, transparent, and technology-driven financial solutions. Under his leadership, the firm combines deep domain expertise with modern tools to deliver end-to-end accounting services aligned with each client's growth journey.</p>
-          <p>He is committed to providing cost-effective solutions across accounting, bookkeeping, payroll, and taxation, while maintaining a strong focus on client satisfaction and consistent service excellence.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Muskan — white bg, photo left, content right -->
-<section class="team-white-bg">
-  <div class="container">
-    <div class="team-profile">
-      <div class="team-profile-photo">
-        <img src="images/muskan.jpg" alt="CA Muskan Bhura" loading="lazy">
+        <picture><source srcset="images/muskan.webp" type="image/webp"><img src="images/muskan.webp" alt="CA Muskan Bhura" loading="lazy"></picture>
       </div>
       <div class="team-profile-content">
         <div class="team-role-label">Co-Founder</div>
@@ -583,9 +558,32 @@
           <span class="team-tag"><i class="fa-solid fa-globe"></i> US Accounting</span>
         </div>
         <div class="team-bio">
-          <p>CA Muskan Bhura is a qualified Chartered Accountant (India) with experience in US accounting and bookkeeping for overseas clients.</p>
-          <p>At AB Ledgerworks LLP, she brings expertise in end-to-end bookkeeping, reconciliations, month-end close, payroll support, and financial reporting using platforms such as QuickBooks Online, AppFolio, and Yardi.</p>
-          <p>With a detail-oriented and reliable approach, she helps businesses maintain accurate financial records and efficient accounting processes while supporting international clients.</p>
+          <p>CA Muskan Bhura is a Chartered Accountant (India) with experience in US accounting and bookkeeping for overseas clients. She specialises in bookkeeping, reconciliations, payroll support, month-end closing, and financial reporting using QuickBooks Online, AppFolio, and Yardi.</p>
+          <p>With a detail-oriented approach, she helps businesses maintain accurate and efficient accounting processes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Naveen — white bg, photo left, content right -->
+<section class="team-white-bg">
+  <div class="container">
+    <div class="team-profile">
+      <div class="team-profile-photo">
+        <picture><source srcset="images/naveen.webp" type="image/webp"><img src="images/naveen.webp" alt="CA Naveen Bhura" loading="lazy"></picture>
+      </div>
+      <div class="team-profile-content">
+        <div class="team-role-label">Co-Founder</div>
+        <div class="team-name">CA Naveen Bhura</div>
+        <div class="team-tags">
+          <span class="team-tag"><i class="fa-solid fa-certificate"></i> Chartered Accountant</span>
+          <span class="team-tag"><i class="fa-solid fa-chart-line"></i> Financial Advisor</span>
+          <span class="team-tag"><i class="fa-solid fa-briefcase"></i> 10+ Years</span>
+        </div>
+        <div class="team-bio">
+          <p>CA Naveen Bhura is a qualified professional with over 10 years of experience in accounting and finance, specialising in QuickBooks, audit, and assurance. As the driving force behind AB Ledgerworks LLP, he focuses on delivering accurate, transparent, and technology-driven financial solutions to businesses worldwide.</p>
+          <p>He is committed to providing cost-effective accounting, bookkeeping, payroll, and taxation services with a strong emphasis on client satisfaction and service excellence.</p>
         </div>
       </div>
     </div>

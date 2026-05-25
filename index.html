@@ -312,7 +312,8 @@
   .tools-intro { text-align: center; max-width: 900px; margin: 0 auto 68px; }
   .tools-intro .section-subtitle { margin: 0 auto; }
 
-  .tools-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .tools-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .tool-item { flex: 0 0 calc((100% - 64px) / 5); }
 
   .tool-item {
     background: var(--white); border: 1px solid var(--grey-100); border-radius: var(--radius);
@@ -422,7 +423,7 @@
     .hero-content { padding-top: 80px; }
   }
   @media (max-width: 1100px) {
-    .tools-grid { grid-template-columns: repeat(4, 1fr); }
+    .tool-item { flex: 0 0 calc((100% - 48px) / 4); }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
   @media (max-width: 1280px) {
@@ -445,7 +446,7 @@
     #hero { height: 85vh; }
     .hero-content { padding-top: 80px; }
     .section { padding: 72px 0; }
-    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    .tool-item { flex: 0 0 calc((100% - 32px) / 3); }
     .footer-top { grid-template-columns: 1fr; gap: 36px; }
     .footer-brand-desc { max-width: 100%; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -459,7 +460,7 @@
   }
   @media (max-width: 540px) {
     #hero { height: 85vh; }
-    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .tool-item { flex: 0 0 calc((100% - 16px) / 2); }
     .hero-label { font-size: 9px; }
     .hero-headline { font-size: clamp(2.4rem, 8vw, 3rem); }
     .hero-sub { font-size: 0.88rem; }
@@ -577,7 +578,7 @@
             <span class="service-title-main">Virtual</span>
             <span class="service-title-sub">CFO</span>
           </div>
-          <p class="service-card-desc">Strategic financial leadership without the overhead.</p>
+          <p class="service-card-desc">Strategic business leadership without the overhead.</p>
           <a href="services.html#svc-cfo" class="service-learn-more">
             <span class="service-learn-text">Learn More</span>
             <span class="service-learn-btn">
@@ -596,7 +597,7 @@
             <span class="service-title-main">Advisory</span>
             <span class="service-title-sub">Services</span>
           </div>
-          <p class="service-card-desc">Expert guidance for smarter financial decisions.</p>
+          <p class="service-card-desc">Expert guidance for better growth decisions.</p>
           <a href="services.html#svc-advisory" class="service-learn-more">
             <span class="service-learn-text">Learn More</span>
             <span class="service-learn-btn">
@@ -634,7 +635,7 @@
             <span class="service-title-main">Data</span>
             <span class="service-title-sub">Analytics</span>
           </div>
-          <p class="service-card-desc">Actionable insights from your financial data.</p>
+          <p class="service-card-desc">Actionable insights that drive smarter decisions.</p>
           <a href="services.html#svc-analytics" class="service-learn-more">
             <span class="service-learn-text">Learn More</span>
             <span class="service-learn-btn">
@@ -696,7 +697,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
         </div>
         <h3 class="why-card-title">Skilled Professionals</h3>
-        <p class="why-card-desc">Our team brings over a decade of experience in accounting, bookkeeping, and financial operations — delivering reliable, CPA-ready financials that help businesses stay organized, informed, and growth-focused.</p>
+        <p class="why-card-desc">Our team brings over a decade of experience in accounting, bookkeeping, and financial operations — delivering reliable, CPA ready organized books and reports that help businesses stay organized, informed, and growth-focused.</p>
       </div>
 
       <!-- Data Security -->
@@ -704,8 +705,8 @@
         <div class="why-icon-wrap wi-amber">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
         </div>
-        <h3 class="why-card-title">Data Security &amp; Compliance</h3>
-        <p class="why-card-desc">Enterprise-grade security, NDA protection, and SOC-compliant processes that safeguard your data and ensure complete confidentiality.</p>
+        <h3 class="why-card-title">Data Security &amp; Confidentiality</h3>
+        <p class="why-card-desc">We maintain strict confidentiality and secure data management practices to protect your financial information. Your records and business data remain safe, private, and securely handled at all times.</p>
       </div>
 
       <!-- Scalable Support -->
@@ -766,7 +767,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="outsource-card-title">Strategic Focus</div>
-        <div class="outsource-card-desc">Free your leadership team to focus on growth while we own every aspect of your financial operations.</div>
+        <div class="outsource-card-desc">Free your leadership team to focus on growth while we own every aspect of your back-office operations.</div>
       </div>
 
       <div class="outsource-card">
@@ -782,7 +783,7 @@
           <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8 10 1 17"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <div class="outsource-card-title">Speed &amp; Agility</div>
-        <div class="outsource-card-desc">Faster month-end closes and real-time financial insights that power smarter, quicker decisions.</div>
+        <div class="outsource-card-desc">Faster month-end closes and real-time business insights that power smarter decisions.</div>
       </div>
 
       <div class="outsource-card">
@@ -808,52 +809,40 @@
 
     <div class="tools-grid">
       <div class="tool-item">
-        <img src="assets/home/tools_logo/freshbooks.svg" alt="FreshBooks" class="logo-wide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">FreshBooks</span>
+        <img src="assets/home/tools_logo/zoho.svg" alt="Zoho Books" class="logo-wide" loading="lazy">
+        <span class="tool-item-name">Zoho Books</span>
       </div>
       <div class="tool-item">
-        <img src="assets/home/tools_logo/quickbooks.svg" alt="QuickBooks" loading="lazy">
-        <span class="tool-item-name">QuickBooks</span>
-      </div>
-      <div class="tool-item">
-        <img src="assets/home/tools_logo/xero.svg" alt="Xero" loading="lazy">
-        <span class="tool-item-name">Xero</span>
-      </div>
-      <div class="tool-item">
-        <img src="assets/home/tools_logo/zoho.svg" alt="Zoho" class="logo-wide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">Zoho</span>
-      </div>
-      <div class="tool-item">
-        <img src="assets/home/tools_logo/wave.png" alt="Wave" class="logo-wide" loading="lazy" loading="lazy">
+        <img src="assets/home/tools_logo/wave.png" alt="Wave" class="logo-wide" loading="lazy">
         <span class="tool-item-name">Wave</span>
-      </div>
-      <div class="tool-item">
-        <img src="assets/home/tools_logo/sage.svg" alt="Sage" class="logo-wide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">Sage</span>
       </div>
       <div class="tool-item">
         <img src="assets/home/tools_logo/netsuite.svg" alt="NetSuite" loading="lazy">
         <span class="tool-item-name">NetSuite</span>
       </div>
       <div class="tool-item">
-        <img src="assets/home/tools_logo/bill_com.png" alt="Bill.com" class="logo-xwide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">Bill.com</span>
+        <img src="assets/home/tools_logo/sage.svg" alt="Sage" class="logo-wide" loading="lazy">
+        <span class="tool-item-name">Sage</span>
       </div>
       <div class="tool-item">
-        <img src="assets/home/tools_logo/free_agent.png" alt="FreeAgent" class="logo-xwide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">FreeAgent</span>
-      </div>
-      <div class="tool-item">
-        <img src="assets/home/tools_logo/taxcalc.png" alt="TaxCalc" class="logo-xwide" loading="lazy" loading="lazy">
+        <img src="assets/home/tools_logo/taxcalc.png" alt="TaxCalc" class="logo-xwide" loading="lazy">
         <span class="tool-item-name">TaxCalc</span>
       </div>
       <div class="tool-item">
-        <img src="assets/home/tools_logo/Access%20financial.svg" alt="Access Financial" class="logo-wide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">Access Fin.</span>
+        <img src="assets/home/tools_logo/Access%20financial.svg" alt="Access Financials" loading="lazy">
+        <span class="tool-item-name">Access Financials</span>
       </div>
       <div class="tool-item">
-        <img src="assets/home/tools_logo/bright%20pay.png" alt="BrightPay" class="logo-xwide" loading="lazy" loading="lazy">
-        <span class="tool-item-name">BrightPay</span>
+        <img src="assets/home/tools_logo/shopify.png" alt="Shopify" class="logo-wide" loading="lazy">
+        <span class="tool-item-name">Shopify</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/home/tools_logo/a2x.png" alt="A2X" class="logo-wide" loading="lazy">
+        <span class="tool-item-name">A2X</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/home/tools_logo/appfolio.png" alt="AppFolio" class="logo-wide" loading="lazy">
+        <span class="tool-item-name">AppFolio</span>
       </div>
     </div>
 
